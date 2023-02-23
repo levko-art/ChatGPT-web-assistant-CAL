@@ -6,10 +6,11 @@ app = FastAPI()
 
 
 @app.get("/ping/")
-def root():
+async def ping():
     return {"message": "pong"}
 
 
 @app.post("/topic_by_url/")
 async def topic_by_url(data=Body()):
     return {"message": make_topic(data['url'])}
+
