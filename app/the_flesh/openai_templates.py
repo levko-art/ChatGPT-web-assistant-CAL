@@ -1,9 +1,9 @@
-import os
-
 import openai
 
-openai.organization = os.getenv('OPENAI_ORGANIZATION')
-openai.api_key = os.getenv('OPENAI_API_KEY')
+import settings
+
+openai.organization = settings.OPENAI_ORGANIZATION
+openai.api_key = settings.OPENAI_API_KEY
 
 
 def get_text_request(prompt):
