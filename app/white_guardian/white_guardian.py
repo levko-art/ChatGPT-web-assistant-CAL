@@ -2,19 +2,19 @@ from os import getenv
 
 from pymysql import connect
 
-from settings import DATABASES, OPENAI_API_KEY
+from settings import OPENAI_API_KEY, HOST, USERNAME, PASSWORD, DATABASE, PORT
 
 print('*'*40)
 print(OPENAI_API_KEY)
-print(DATABASES.DB_TOPICS.HOST.value)
-print(DATABASES.DB_TOPICS.USERNAME.value)
-print(DATABASES.DB_TOPICS.PORT.value)
+print(HOST)
+print(USERNAME)
+print(PORT)
 connection = connect(
-        host=DATABASES.DB_TOPICS.HOST.value,
-        user=DATABASES.DB_TOPICS.USERNAME.value,
-        password=DATABASES.DB_TOPICS.PASSWORD.value,
-        database=DATABASES.DB_TOPICS.DATABASE.value,
-        port=int(DATABASES.DB_TOPICS.PORT.value),
+        host=HOST,
+        user=USERNAME,
+        password=PASSWORD,
+        database=DATABASE,
+        port=int(PORT),
     )
 
 
