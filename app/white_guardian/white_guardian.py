@@ -1,9 +1,9 @@
-import datetime
-
 from pymysql import connect
 
 from settings import DATABASES
 
+print('*'*40)
+print(DATABASES.DB_TOPICS.PORT.value)
 connection = connect(
         host=DATABASES.DB_TOPICS.HOST.value,
         user=DATABASES.DB_TOPICS.USERNAME.value,
