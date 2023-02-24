@@ -1,18 +1,14 @@
 import os
-
-from sqlalchemy import create_engine
+from enum import Enum
 
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 OPENAI_ORGANIZATION = os.getenv('OPENAI_ORGANIZATION')
 
-DB_TOPICS_DIALECT = os.getenv('DB_TOPICS_DIALECT')
-DB_TOPICS_DRIVER = os.getenv('DB_TOPICS_DRIVER')
-DB_TOPICS_USERNAME = os.getenv('DB_TOPICS_USERNAME')
-DB_TOPICS_PASSWORD = os.getenv('DB_TOPICS_PASSWORD')
-DB_TOPICS_HOST = os.getenv('DB_TOPICS_HOST')
-DB_TOPICS_PORT = os.getenv('DB_TOPICS_PORT')
-DB_TOPICS_DATABASE = os.getenv('DB_TOPICS_DATABASE')
 
-DB_TOPICS_ENGINE = create_engine(
-    f'{DB_TOPICS_DIALECT}+{DB_TOPICS_DRIVER}://{DB_TOPICS_USERNAME}:{DB_TOPICS_PASSWORD}@{DB_TOPICS_HOST}:{DB_TOPICS_PORT}/{DB_TOPICS_DATABASE}'
-).connect()
+class DATABASES:
+    class DB_TOPICS(Enum):
+        USERNAME = os.getenv('DB_TOPICS_USERNAME')
+        PASSWORD = os.getenv('DB_TOPICS_PASSWORD')
+        HOST = os.getenv('DB_TOPICS_HOST')
+        PORT = os.getenv('DB_TOPICS_PORT')
+        DATABASE = os.getenv('DB_TOPICS_DATABASE')

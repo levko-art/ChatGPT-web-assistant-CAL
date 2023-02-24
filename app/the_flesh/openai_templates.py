@@ -11,7 +11,7 @@ def get_text_request(prompt):
         model='text-davinci-003',
         prompt=prompt,
         temperature=0.7,
-        max_tokens=3800,
+        max_tokens=3400,
         top_p=1,
         frequency_penalty=0.0,
         presence_penalty=0.0,
