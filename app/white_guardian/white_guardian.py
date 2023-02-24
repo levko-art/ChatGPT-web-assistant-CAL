@@ -1,8 +1,11 @@
+from os import getenv
+
 from pymysql import connect
 
-from settings import DATABASES
+from settings import DATABASES, OPENAI_API_KEY
 
 print('*'*40)
+print(OPENAI_API_KEY)
 print(DATABASES.DB_TOPICS.HOST.value)
 print(DATABASES.DB_TOPICS.USERNAME.value)
 print(DATABASES.DB_TOPICS.PORT.value)
