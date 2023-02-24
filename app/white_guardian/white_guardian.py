@@ -24,7 +24,6 @@ def new_id():
 
 def new_topic(topic_title, topic_text):
     query = f'INSERT INTO ai_content (`id`, `title`, `introtext`, `fulltext`) VALUES ({new_id()}, {topic_title}, "{topic_text[:30]}...", "{topic_text}")'
-    print(query)
     with connection.cursor() as cursor:
         cursor.execute(query)
         connection.commit()
