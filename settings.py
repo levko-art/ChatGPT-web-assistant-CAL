@@ -11,4 +11,4 @@ class DATABASES:
         PASSWORD = os.getenv('DB_TOPICS_PASSWORD')
         HOST = os.getenv('DB_TOPICS_HOST')
         PORT = os.getenv('DB_TOPICS_PORT')
-        DATABASE = os.getenv('DB_TOPICS_DATABASE')
+        DATABASE = os.getenv('DB_TOPICS_DATABASE', 3306)
