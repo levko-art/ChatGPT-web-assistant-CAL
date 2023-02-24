@@ -32,8 +32,8 @@ async def topic_by_url(data=Body()):
     header = make_header_for_topic(data['url'])
     topic = make_seo_optimized_topic_text(data['url'])
     new_topic(
-        header.replace('\n', '').replace('\'', ''),
-        topic.replace('\n', '').replace('\'', '')
+        header.replace('\n', '').replace('\'', '`'),
+        topic.replace('\n', '').replace('\'', '`')
     )
     return {
         'message': 'success'
