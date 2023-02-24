@@ -19,14 +19,18 @@ services:
       - DATABASE_URL=postgresql://fastapi:fastapi@db/fastapi
 
   db:
-    image: postgres:12.1-alpine
+    image: mysql:latest
+    command: mysqld --default-authentication-plugin=mysql_native_password
     container_name: db
     volumes:
-      - postgres_data:/var/lib/postgresql/data/
+      - "./mysql:/var/lib/mysql"
+    ports:
+      - "3306:3306"
+    restart: always
     environment:
-      - POSTGRES_USER=fastapi
-      - POSTGRES_PASSWORD=fastapi
-      - POSTGRES_DB=fastapi
+        - MYSQL_DATABASE=bankvizi_ainews
+        - MYSQL_USER=bankvizi_ainews
+        - MYSQL_PASSWORD=j5c5DG7#e#
 
 volumes:
-  postgres_data:
+  my-db:

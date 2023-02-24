@@ -1,7 +1,13 @@
 # pull official base image
 FROM python:3.8.1-alpine
 
+RUN apk update
+RUN apk add musl-dev mariadb-dev gcc
+RUN pip install mysqlclient
+
 # set work directory
+RUN mkdir /src
+
 WORKDIR /src
 
 # set environment variables

@@ -5,6 +5,7 @@ from app.doctor_who.text import (
     make_seo_optimized_topic_text,
     make_tags_for_topic, make_image_for_topic,
 )
+from settings import DB_TOPICS_ENGINE
 
 app = FastAPI()
 
