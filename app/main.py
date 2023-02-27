@@ -29,11 +29,11 @@ async def topic_by_url(data=Body()):
 
 @app.post('/topic_by_url/')
 async def topic_by_url(data=Body()):
-    header = make_header_for_topic(data['url'])
-    topic = make_seo_optimized_topic_text(data['url'])
+    header = make_header_for_topic(data['url']).replace('\n', '').replace('\'', '`').replace('"', '')
+    topic = make_seo_optimized_topic_text(data['url']).replace('\n', '').replace('\'', '`').replace('"', '')
     new_topic(
-        header.replace('\n', '').replace('\'', '`'),
-        topic.replace('\n', '').replace('\'', '`')
+        header,
+        topic
     )
     return {
         'message': 'success'

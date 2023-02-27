@@ -1,4 +1,6 @@
 import datetime
+import random
+import string
 
 from pymysql import connect
 
@@ -22,8 +24,19 @@ def new_id():
         return int(id_from_tuple) + 1
 
 
+def new_asset_id():
+    query = f'SELECT MAX(asset_id) FROM ai_content'
+    with connection.cursor() as cursor:
+        cursor.execute(query)
+        id_hiden_in_tuple = cursor.fetchone()
+        id_from_tuple = id_hiden_in_tuple[0]
+        return int(id_from_tuple) + 1
+
+
 def new_topic(topic_title, topic_text):
-    query = f'INSERT INTO ai_content (`id`, `title`, `introtext`, `fulltext`) VALUES ({new_id()}, {topic_title}, "{topic_text[:30]}...", "{topic_text}")'
+    alias = ''.join(random.choice(string.ascii_lowercase) for i in range(10))
+    query = f'INSERT INTO ai_content (`id`, `asset_id`, `title`, `alias`, `introtext`, `fulltext`, `state`, `catid`, `created_by`, `modified_by`, `version`, `ordering`, `access`, `hits`) ' \
+            f'VALUES ({new_id()}, {new_asset_id()}, "{topic_title}", "{alias}", "{topic_text[:300]}...", "{topic_text}", 1, 8, 734, 734, 1, 1, 1, 0)'
     with connection.cursor() as cursor:
         cursor.execute(query)
         connection.commit()
